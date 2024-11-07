@@ -44,8 +44,8 @@ class CompletePurchaseRequest extends PurchaseRequest
             return $this->response = new CompletePurchasePdtResponse($this, $httpResponse->getBody()->getContents());
         } else {
             // validate ITN
-            $url = $this->getEndpoint().'/query/validate';
-            $httpResponse = $this->httpClient->request('post', $url, [], http_build_query($data));
+            $url = $this->getEndpoint().'/query/validate?' . http_build_query($data);
+            $httpResponse = $this->httpClient->request('post', $url);
             $status = $httpResponse->getBody()->getContents();
             return $this->response = new CompletePurchaseItnResponse($this, $data, $status);
         }
