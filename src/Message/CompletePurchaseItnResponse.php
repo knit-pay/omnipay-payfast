@@ -10,6 +10,8 @@ use Omnipay\Common\Message\RequestInterface;
  */
 class CompletePurchaseItnResponse extends AbstractResponse
 {
+    private $status;
+
     public function __construct(RequestInterface $request, $data, $status)
     {
         parent::__construct($request, $data);
